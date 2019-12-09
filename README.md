@@ -55,6 +55,10 @@ npm install
 
 ## Setup
 
+### Video
+[![Jam Setup](https://i.imgur.com/v1WynfR.png)](https://streamable.com/5agkh)
+
+
 Now that Jam is installed, you will need to set up your `config.json` file and windows `hosts` file.
 
 ### Setting up the configuration
@@ -131,7 +135,7 @@ Once you have done this, you can now save the file and exit.
 
 ## Run
 
-After setting up the `config.json` and `hosts` file, Jam is ready to go. To run Jam, simply use the command `npm run start` in the console.
+After setting up the `config.json` and `hosts` file, Jam is ready to go. To run Jam, simply use the command `npm start` in the console.
 
 Now you can login and play!
 

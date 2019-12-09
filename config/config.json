@@ -1,0 +1,14 @@
+{
+  "jam": {
+    "name": "Jam",
+    "port": 443,
+    "debug": true,
+    "remote": {
+      "host": "",
+      "port": 443
+    }
+  },
+  "settings": {
+    "prefix": "!"
+  }
+}

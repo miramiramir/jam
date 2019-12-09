@@ -4,7 +4,7 @@
     "port": 443,
     "debug": true,
     "remote": {
-      "host": "",
+      "host": "34.215.158.206",
       "port": 443
     }
   },

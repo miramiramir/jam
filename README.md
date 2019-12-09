@@ -57,8 +57,6 @@ npm install
 
 Now that Jam is installed, you will need to set up your `config.json` file and windows `hosts` file.
 
-**Note**: We will not include Animal Jam's server address for obvious reasons, you will have to figure that out yourself.
-
 ### Setting up the configuration
 
 1. Open the jam folder in your file explorer
@@ -73,7 +71,7 @@ Your `config.json` file should look something like this:
     "port": 443,
     "debug": true,
     "remote": {
-      "host": "", 
+      "host": "34.215.158.206", 
       "port": 443
     }
   },
@@ -126,7 +124,7 @@ Your `hosts` file should look something like this:
 Now you will have to include Animal Jam's server address string inside the `hosts` file.
 
 ```
-127.0.0.1  Animal Jam server address here
+127.0.0.1  aws-or-prod-iss02.animaljam.com
 ```
 
 Once you have done this, you can now save the file and exit.

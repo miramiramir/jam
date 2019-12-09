@@ -7,14 +7,14 @@ class Adventure extends Plugin {
         {
           name: 'adventure',
           description: 'Loads chests and gives experience',
-          execute: ({ client }) => this.load(client),
+          execute: ({ client }) => this.adventureCommand(client),
         },
       ],
     });
 
     /**
      * Chest load interval
-     * @type {Timeout}
+     * @type {?Interval}
      * @public
      */
     this._interval = null;
@@ -23,6 +23,7 @@ class Adventure extends Plugin {
   /**
    * Sends the chest packet
    * @param {Client} client Client instance
+   * @public
    */
   chest(client) {
     client.remoteWrite(`%xt%o%qat%4640562%treasure_1%0%`);
@@ -30,11 +31,11 @@ class Adventure extends Plugin {
   }
 
   /**
-   * Loads the interval
+   * Adventure command
    * @param {Client} client Client instance
    * @public
    */
-  load(client) {
+  adventureCommand(client) {
     if (this._interval) {
       this.clear(client, this._interval);
       return;
@@ -47,6 +48,7 @@ class Adventure extends Plugin {
    * Clears an interval
    * @param {Client} client Client instance
    * @param {Timeout} interval Interval to clear
+   * @public
    */
   clear(client, interval) {
     client.clearInterval(interval);

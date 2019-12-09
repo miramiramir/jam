@@ -144,6 +144,17 @@ class Client {
   }
 
   /**
+   * Displays a server admin message
+   * @param {string} text The text to send
+   * @returns {Promise<void>}
+   * @public
+   */
+  serverMessage(text) {
+    return this.localWrite(`%xt%ua%${text}%0%`);
+  }
+
+
+  /**
    * Sets an interval
    * @param {Function} fn Function to execute
    * @param {*} delay Time to wait between executions

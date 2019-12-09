@@ -24,6 +24,12 @@ Brought you by **Team Slick**! Follow us on **Instagram** to keep up to date wit
 - [Zane](https://www.instagram.com/zane.slick)
 - [Xyo](https://www.instagram.com/xyo.slick)
 
+## Video
+
+Jam commands example.
+
+[![Jam commands](https://i.imgur.com/WsmyKwG.jpg)](https://giant.gfycat.com/AnguishedGivingAllosaurus.webm)
+
 ## Install
 
 **Note**: Make sure you have the latest version of [Nodejs](https://nodejs.org/en/) installed before running Jam.

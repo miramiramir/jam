@@ -12,6 +12,7 @@ class Help extends Plugin {
       ],
     });
   }
+
   /**
    * Displays the list of commands
    * @param {Client} client Client instance

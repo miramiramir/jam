@@ -195,7 +195,7 @@ class PluginManager {
         if (!command) return;
 
         const cmd = this.commands.get(command);
-        if (cmd) cmd.execute({ client, packet });
+        if (cmd) cmd.execute({ client, packet, params });
         return;
       }
     }

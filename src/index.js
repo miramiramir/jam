@@ -1,30 +1,34 @@
+const Web = require('./web');
+const Config = require('./config');
+const logger = require('./logger');
+const Process = require('./process');
+const path = require('path');
 const { dumpAsciiLogo } = require('./util');
 
-const Server = require('./network/Server');
-const logger = require('./logger');
-const Config = require('./config');
-const Plugin = require('./plugin');
-
 dumpAsciiLogo();
+
 
 /**
  * Config
  */
 Config.load();
 
-/**
- * Global config
- */
-global.Config = Config;
 
 /**
- * Global plugin
+ * Process
  */
-global.Plugin = Plugin;
+const process = new Process(path.join(__dirname, '.', 'Jam.js'));
+
+/**
+ * Web server object
+ */
+const { port } = Config.get('web');
 
 /**
  * Spawn
  */
-Server.spawn()
-  .then(() => logger.info('Successfully initialized!'))
-  .catch(error => logger.error(`Failed to spawn servers.. Reason: ${error.message}`));
+Web(port)
+  .then(() => logger.info('Web Server Initialized...'))
+  .then(() => process.spawn())
+  .then(() => logger.info('Spawning Jam...'))
+  .catch(error => logger.error(`Failed Initializing! Reason: ${error.message}`));

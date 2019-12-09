@@ -15,6 +15,9 @@ const FULL_PATH = path.join(__dirname, '..', '..', 'config', 'config.json');
  * @constant
  */
 const TEMPLATE = {
+  web: {
+    port: 80,
+  },
   jam: {
     name: 'Jam',
     port: 5588,

@@ -1,4 +1,7 @@
 {
+  "web": {
+    "port": 80
+  },
   "jam": {
     "name": "Jam",
     "port": 443,

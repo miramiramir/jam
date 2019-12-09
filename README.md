@@ -24,9 +24,7 @@ Brought you by **Team Slick**! Follow us on **Instagram** to keep up to date wit
 - [Zane](https://www.instagram.com/zane.slick)
 - [Xyo](https://www.instagram.com/xyo.slick)
 
-## Video
-
-Jam commands example.
+## Commands example video
 
 [![Jam commands](https://i.imgur.com/WsmyKwG.jpg)](https://giant.gfycat.com/AnguishedGivingAllosaurus.webm)
 
@@ -56,6 +54,7 @@ npm install
 ## Setup
 
 ### Video
+
 [![Jam Setup](https://i.imgur.com/v1WynfR.png)](https://streamable.com/5agkh)
 
 

@@ -5,7 +5,7 @@
   "jam": {
     "name": "Jam",
     "port": 443,
-    "debug": true,
+    "debug": false,
     "remote": {
       "host": "34.215.158.206",
       "port": 443

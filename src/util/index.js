@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 const notifier = require('node-notifier');
-
+const path = require('path');
 
 class Util {
   constructor() {
@@ -34,7 +34,10 @@ class Util {
    * @returns {NodeNotifier}
    */
   static notify(options = {}) {
-    return notifier.notify(options);
+    return notifier.notify({
+      icon: path.join(__dirname, '..', '..', 'assets', 'icon.png'),
+      ...options,
+    });
   }
 }
 

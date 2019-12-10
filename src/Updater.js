@@ -50,7 +50,6 @@ class Updater {
     return notify({
       title: 'New Update available!',
       message: 'Jam updates, click me!',
-      icon: path.join(__dirname, '..', 'assets', 'icon.png'),
       wait: true,
     }).on('click', () => opn(page));
   }

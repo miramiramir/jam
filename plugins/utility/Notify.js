@@ -9,7 +9,7 @@ class Notify extends Plugin {
         {
           packet: 'ti',
           type: 'remote',
-          execute: ({ client, packet }) => this.onTrade(client, packet),
+          execute: ({ packet }) => this.onTrade(packet),
         },
       ],
     });
@@ -17,11 +17,10 @@ class Notify extends Plugin {
 
   /**
    * Called upon trade requests
-   * @param {Client} client The client instance
    * @param {XtPacket} packet The packet to handle
    * @public
    */
-  onTrade(client, packet) {
+  onTrade(packet) {
     const username = packet.object[5];
     const type = Number(packet.object[4]);
 

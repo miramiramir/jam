@@ -28,11 +28,16 @@ class TCPServer extends EventEmitter {
     this.plugins.loadAll();
 
     /**
-     * Handles all connected connections
-     * @type {Map<Client>}
-     * @public
+     * The connected client
+     * @type {Client}
+     * @private
      */
-    this.connections = new Set();
+    this._client = null;
+
+    /**
+     * Handles the process events
+     */
+    process.on('message', this._onProcess.bind(this));
   }
 
   get logger() {
@@ -45,10 +50,11 @@ class TCPServer extends EventEmitter {
    * @returns {TCPServer}
    * @static
    */
-  static spawn() {
+  static async spawn() {
     const server = Config.get('jam');
     const tcpServer = new TCPServer(server);
-    return tcpServer.listen();
+    await tcpServer.listen();
+    return this;
   }
 
   /**
@@ -69,17 +75,37 @@ class TCPServer extends EventEmitter {
   }
 
   /**
+   * Handles the process events
+   * @param {Object} data The incoming data to handle
+   * @private
+   */
+  _onProcess(data) {
+    switch (data.messageType) {
+      case 'packet': {
+        const packet = data.packet;
+        const type = data.type;
+
+        if (type === 'local') {
+          this._client.localWrite(packet);
+        } else {
+          this._client.remoteWrite(packet);
+        }
+        break;
+      }
+    }
+  }
+
+  /**
    * Handles new incoming connections
    * @param {net.Socket} socket Connection socket
    */
   async _onConnection(socket) {
     socket = new PromiseSocket(socket);
 
-    const client = new Client(this, socket);
-    await client.connect();
+    this._client = new Client(this, socket);
+    await this._client.connect();
 
-    this.connections.add(client);
-    this.emit(EVENTS.NEW_CONNECTION, client);
+    this.emit(EVENTS.NEW_CONNECTION, this._client);
   }
 
   /**
@@ -87,10 +113,8 @@ class TCPServer extends EventEmitter {
    * @param {Client} client Client to remove
    */
   removeConnection(client) {
-    if (this.connections.has(client)) {
-      this.connections.delete(client);
-      this.emit(EVENTS.CONNECTION_REMOVED, client);
-    }
+    this._client = null;
+    this.emit(EVENTS.CONNECTION_REMOVED, client);
   }
 }
 

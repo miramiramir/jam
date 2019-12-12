@@ -115,7 +115,7 @@ class Client {
         let toPacket = packet instanceof Packet ? packet.toPacket() : packet;
         if (typeof toPacket === 'object') toPacket = JSON.stringify(toPacket);
 
-        if (this.server.debug) this.server.logger.info(`[Client] ${toPacket}`, { server: this.server.name });
+        process.send({ type: 'packet', packet: toPacket, packetType: 'remote' });
         await this.remote.write(`${toPacket}\x00`);
       } catch (error) {
         this.server.logger.error(`Remote send failed! Reason: ${error.message}`, { server: this.server.name });
@@ -135,7 +135,7 @@ class Client {
         let toPacket = packet instanceof Packet ? packet.toPacket() : packet;
         if (typeof toPacket === 'object') toPacket = JSON.stringify(toPacket);
 
-        if (this.server.debug) this.server.logger.info(`[Remote] ${toPacket}`, { server: this.server.name });
+        process.send({ type: 'packet', packet: toPacket, packetType: 'local' });
         await this.socket.write(`${toPacket}\x00`);
       } catch (error) {
         this.server.logger.error(`Local send failed! Reason: ${error.message}`, { server: this.server.name });

@@ -42,14 +42,14 @@ class Config {
    * If no configuration file found it will create one
    * @private
    */
-  static load() {
+  static async load() {
     if (!fse.existsSync(FULL_PATH)) {
       fse.outputJSONSync(FULL_PATH, TEMPLATE, { spaces: 2 });
       Logger.info(`Created a configuration file at: ${FULL_PATH}`);
       process.exit(0);
     }
 
-    this._configuration = fse.readJsonSync(FULL_PATH, { encoding: 'utf-8' });
+    this._configuration = await fse.readJson(FULL_PATH, { encoding: 'utf-8' });
   }
 
   /**

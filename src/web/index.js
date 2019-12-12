@@ -1,10 +1,6 @@
 const express = require('express');
+const logger = require('../logger');
 const path = require('path');
-
-/**
- * Routes
- */
-const SiteRouter = require('./routes/Site');
 
 /**
  * Express instance
@@ -15,7 +11,7 @@ const app = express();
  * Settings
  */
 app.set('views', path.join(__dirname, '.', 'resources/views'));
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 
 /**
  * Middleware
@@ -23,13 +19,13 @@ app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, '.', 'public')));
 
 /**
- * Routers
- */
-app.use('/', SiteRouter);
-
-/**
  * Express listen
  * @param {string} port Server listen port
  * @returns {Promise<void>}
  */
-module.exports = port => new Promise(resolve => app.listen(port, () => resolve()));
+module.exports = port => new Promise(resolve => {
+  app.listen(port, () => {
+    logger.info(`Jam web listening on ::${port}`);
+    resolve();
+  });
+});

@@ -1,9 +1,8 @@
 const { version } = require('../package.json');
-const { notify } = require('./util');
-const logger = require('./logger');
+const { notify } = require('../util');
+const logger = require('../logger');
 const semver = require('semver');
 const axios = require('axios');
-const path = require('path');
 const opn = require('opn');
 
 class Updater {

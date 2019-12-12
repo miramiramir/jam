@@ -29,19 +29,10 @@ class Process extends EventEmitter {
       if (this._process) reject(new Error('Process already exsists.'));
 
       this._process = childProcess.fork(this._file)
-        .on('message', message => this._onMessage(message))
+        .on('message', message => this.emit('message', message))
         .once('error', error => reject(error));
       resolve();
     });
-  }
-
-  /**
-   * Handles messages from the child process
-   * @param {Object} message Message from the child process
-   * @private
-   */
-  _onMessage(message) {
-    // Todo: handle
   }
 
   /**

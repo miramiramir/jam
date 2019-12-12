@@ -13,19 +13,19 @@ class Util {
    */
   static dumpAsciiLogo() {
     // eslint-disable-next-line no-console
-    console.log(chalk.whiteBright([
+    console.log(chalk.red([
       '',
-      '             -:://::-     ',
-      '             -//++++//-    ',
-      '            `:/++++++/:    ',
-      '           `::-            ',
-      '           .ooo+-    ./o`  ',
-      '            oooooo+/+ooo   ',
-      '            /oooooooooo/   ',
-      '            :oooooooooo-   ',
-      '             `-::::::.` ',
+      '               -:://::-     ',
+      '               -//++++//-    ',
+      '              `:/++++++/:    ',
+      '             `::-            ',
+      '             .ooo+-    ./o`  ',
+      '              oooooo+/+ooo   ',
+      '              /oooooooooo/   ',
+      '              :oooooooooo-   ',
+      '               `-::::::.` ',
       '',
-    ].join('\n')), `\n  Looking for nothing but competition.\n`);
+    ].join('\n')), `\n  ${chalk.white('Looking for nothing but competition.')} \n`);
   }
 
   /**

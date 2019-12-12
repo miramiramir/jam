@@ -2,8 +2,7 @@ const Server = require('../network/Server');
 const logger = require('../logger');
 const Config = require('../config');
 const Plugin = require('../plugin');
-
-let server;
+const chalk = require('chalk');
 
 /**
  * Config
@@ -13,8 +12,7 @@ Config.load()
     global.Config = Config;
     global.Plugin = Plugin;
   })
-  .then(() => {
-    server = Server.spawn();
-  })
+  .then(() => Server.spawn())
   .then(() => logger.info('Successfully initialized!'))
+  .then(() => logger.info(chalk.red('http://localhost for the web interface!')))
   .catch(error => logger.error(`Failed to spawn servers.. Reason: ${error.message}`));

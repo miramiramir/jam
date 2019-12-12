@@ -15,7 +15,7 @@
 
 Jam is a man-in-the-middle proxy server that allows you to easily interact with [Animal Jam](http://animaljam.com).
 
-- Handles multiple clients
+- Web interface
 - Plugin support
 - Chat commands
 
@@ -123,6 +123,7 @@ Your `hosts` file should look something like this:
 Now you will have to include Animal Jam's server address string inside the `hosts` file.
 
 ```
+127.0.0.1  aws-or-prod-iss01.animaljam.com
 127.0.0.1  aws-or-prod-iss02.animaljam.com
 ```
 

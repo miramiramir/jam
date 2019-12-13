@@ -1,4 +1,7 @@
+/* eslint-disable prefer-arrow-callback */
 const messager = {};
+
+let commands = [];
 
 /**
  * Elements
@@ -57,6 +60,8 @@ messager.handleInput = message => {
   if (message.startsWith('/')) {
     const params = message.split(' ');
     const command = params.shift().slice(1);
+
+    socket.emit('game:command', { command, params });
   }
 };
 
@@ -71,6 +76,13 @@ socket.on('packet', data => {
     message: `${type === 'local' ? '[Animal Jam]' : '[Client]'} ${packet}`,
     type,
   });
+});
+
+/**
+ * Handles the commands data
+ */
+socket.on('commands', data => {
+  data.commands.forEach(command => commands.push({ value: `/${command.cmd}`, data: command.description }));
 });
 
 /**
@@ -104,4 +116,14 @@ messager.scrollToBottom = elHeight => {
 messager.showMessage({
   message: '-:://::- Jam Dashboard -:://::-',
   type: 'jam',
+});
+
+/**
+ * Auto complete
+ */
+$(function() {
+  $('#input').autocomplete({
+    source: commands,
+    position: { collision: 'flip' },
+  });
 });

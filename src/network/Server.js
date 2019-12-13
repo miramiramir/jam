@@ -92,6 +92,14 @@ class TCPServer extends EventEmitter {
         }
         break;
       }
+
+      case 'game:command': {
+        const command = data.command;
+        const params = data.params;
+
+        const cmd = this.plugins.commands.get(command);
+        if (cmd) cmd.execute({ client: this._client, params });
+      }
     }
   }
 

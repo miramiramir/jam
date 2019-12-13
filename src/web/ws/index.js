@@ -7,6 +7,8 @@ class WebSocketServer {
   constructor(process) {
     this._process = process;
     this._server = null;
+
+    this._commands = new Set();
   }
 
   /**
@@ -29,12 +31,16 @@ class WebSocketServer {
   /**
    * Handles Jam process events
    * @param {Object} data The incoming data
-   * @private
+  * @private
    */
   _onJamProcess(data) {
     switch (data.type) {
       case 'packet':
         this._server.emit('packet', data);
+        break;
+
+      case 'commands':
+        this._commands = data.commands;
         break;
     }
   }
@@ -45,7 +51,10 @@ class WebSocketServer {
    * @private
    */
   _onConnection(socket) {
+    socket.emit('commands', { commands: this._commands });
+
     socket.on('packet', this._onPacket.bind(this));
+    socket.on('game:command', this._onJamCommand.bind(this));
   }
 
   /**
@@ -59,6 +68,18 @@ class WebSocketServer {
     const packetObject = packet.packet;
 
     this._process.send({ messageType, type, packet: packetObject });
+  }
+
+  /**
+   * Handles game commands
+   * @param {Object} data The command to handle
+   * @private
+   */
+  _onJamCommand(data) {
+    const command = data.command;
+    const params = data.params;
+
+    this._process.send({ messageType: 'game:command', command, params });
   }
 }
 

@@ -79,6 +79,8 @@ class PluginManager {
 
     const plugins = this.constructor._read(pluginPath);
     for (const plugin of plugins) this._registerPlugin(require(plugin));
+
+    this._emitCommandsd();
     logger.info(`Loaded ${this.plugins.size} plugin(s)!`);
   }
 
@@ -195,7 +197,7 @@ class PluginManager {
         if (!command) return;
 
         const cmd = this.commands.get(command);
-        if (cmd) cmd.execute({ client, packet, params });
+        if (cmd) cmd.execute({ client, params });
         return;
       }
     }
@@ -214,6 +216,20 @@ class PluginManager {
     for (const [key, value] of this.remotePacketHooks) {
       if (value.includes(packet.type)) key({ client, packet });
     }
+  }
+
+  /**
+   * Sends all of the commands to the web socket
+   * @private
+   */
+  _emitCommandsd() {
+    const commands = [];
+
+    for (const [cmd, { description }] of this.commands) {
+      commands.push({ cmd, description });
+    }
+
+    process.send({ type: 'commands', commands });
   }
 }
 

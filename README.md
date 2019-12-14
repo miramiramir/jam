@@ -5,7 +5,7 @@
   </p>
   <br />
   <p>
-    <a href="https://discord.gg/deb3aXu"><img src="https://discordapp.com/api/guilds/653142786194931712/embed.png" alt="Discord server" /></a>
+    <a href="https://discord.gg/P2PjUyJ"><img src="https://discordapp.com/api/guilds/653142786194931712/embed.png" alt="Discord server" /></a>
     <a href="https://david-dm.org/zaneslick/jam"><img src="https://david-dm.org/zaneslick/jam/status.svg" alt="Dependencies" /></a>
     <a href="https://david-dm.org/zaneslick/jam?type=dev"><img src="https://david-dm.org/zaneslick/jam/dev-status.svg" alt="Dev Dependencies" /></a>
   </p>

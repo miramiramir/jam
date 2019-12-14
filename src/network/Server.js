@@ -79,16 +79,16 @@ class TCPServer extends EventEmitter {
    * @param {Object} data The incoming data to handle
    * @private
    */
-  _onProcess(data) {
+  async _onProcess(data) {
     switch (data.messageType) {
       case 'packet': {
         const packet = data.packet;
         const type = data.type;
 
         if (type === 'local') {
-          this._client.localWrite(packet);
+          await this._client.localWrite(packet);
         } else {
-          this._client.remoteWrite(packet);
+          await this._client.remoteWrite(packet);
         }
         break;
       }

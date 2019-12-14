@@ -24,6 +24,8 @@ let runnerRow;
  * Sends a packet
  */
 spammer.sendPacket = (content, type) => {
+  if (!content) return;
+
   content = content || input.value;
   opener.emit('packet', { type: 'packet', packetType: type, packet: content });
 };
@@ -75,8 +77,12 @@ spammer.sendClick = () => {
 
   switch (inputType.value) {
     case 'local':
-    case 'remote':
-      spammer.sendPacket(content, type);
+    case 'remote': {
+      const packets = content.match(/[^\r\n]+/g);
+
+      if (packets.length > 1) packets.forEach(p => spammer.sendPacket(p, type));
+      else spammer.sendPacket(content, type);
+    }
       break;
   }
 };

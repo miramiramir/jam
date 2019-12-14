@@ -39,6 +39,7 @@ main {
 
 i {
   color: #b7b7b7;
+  margin-right: 10px;
 }
 
 label {
@@ -99,6 +100,22 @@ label {
   border: 1px solid #20252d !important;
   border-radius: 5px !important;
   color: #b7b7b7 !important;
+}
+
+.input-bar .dropdown-menu {
+  background-color: #131821;
+}
+
+.input-bar .dropdown-item.active, .dropdown-item:active {
+  background-color: #212938;
+}
+
+.input-bar .dropdown-item:hover {
+  background-color: #212938;
+}
+
+.input-bar .dropdown-menu a {
+  color: #b7b7b7;
 }
 
 .row-selected {

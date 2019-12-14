@@ -43,7 +43,12 @@
           </a>
 
           <div class="dropdown-menu" aria-labelledby="menu">
-            <a class="dropdown-item" href="#" onclick="openTools()">Spammer</a>
+            <a class="dropdown-item" href="#" onclick="openTools()">
+              <i class="fas fa-terminal"></i> Spammer
+            </a>
+            <a class="dropdown-item" href="#" onclick="clearLogs()">
+              <i class="fas fa-eraser"></i> Clear
+            </a>
           </div>
         </div>
 
@@ -63,6 +68,10 @@
 
 <script>
   const toolWindows = [];
+
+  function clearLogs() {
+    $('#messages').empty();
+  }
 
   function openTools() {
     const toolWindow = window.open("spammer.html", '', 'width=802, height=709');

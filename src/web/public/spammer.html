@@ -82,10 +82,14 @@
 
     <div class="text-center">
       <div class="px-1">
+
+        <select id="inputRunType" style="margin: 6px;">
+          <option value="loop">Loop</option>
+          <option value="once">Once</option>
+        </select>
+
         <button type="button" class="btn btn-send" onclick="spammer.stopClick()" id="stopButton">Stop</button>
         <button type="button" class="btn btn-add" onclick="spammer.runClick()" id="runButton">Start</button>
-
-        <input id="inputRunType" value="loop" type="hidden">
       </div>
     </div>
   </div>

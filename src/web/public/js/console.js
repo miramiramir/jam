@@ -82,7 +82,9 @@ socket.on('packet', data => {
  * Handles the commands data
  */
 socket.on('commands', data => {
-  data.commands.forEach(command => commands.push({ value: `/${command.cmd}`, data: command.description }));
+  data.commands.forEach(command => {
+    if (commands.indexOf(command.cmd) === -1) commands.push({ value: `/${command.cmd}`, data: command.description });
+  });
 });
 
 /**

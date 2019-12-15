@@ -80,7 +80,7 @@ spammer.sendClick = () => {
     case 'remote': {
       const packets = content.match(/[^\r\n]+/g);
 
-      if (packets.length > 1) packets.forEach(p => spammer.sendPacket(p, type));
+      if (packets.length > 1) spammer.sendPacket(packets, type);
       else spammer.sendPacket(content, type);
     }
       break;

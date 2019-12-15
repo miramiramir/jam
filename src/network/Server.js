@@ -4,6 +4,7 @@ const { EVENTS } = require('../util/Constants');
 const PluginManager = require('../plugin/PluginManager');
 const { PromiseSocket } = require('promise-socket');
 const logger = require('../logger');
+const { isArray } = require('util');
 const Client = require('./Client');
 
 class TCPServer extends EventEmitter {
@@ -79,16 +80,18 @@ class TCPServer extends EventEmitter {
    * @param {Object} data The incoming data to handle
    * @private
    */
-  async _onProcess(data) {
+  _onProcess(data) {
     switch (data.messageType) {
       case 'packet': {
         const packet = data.packet;
         const type = data.type;
 
-        if (type === 'local') {
-          await this._client.localWrite(packet);
+        if (isArray(packet) && packet.length > 0) return this._client.sendMultiple(packet, type);
+
+        if (packet.type === 'local') {
+          this._client.localWrite(packet);
         } else {
-          await this._client.remoteWrite(packet);
+          this._client.remoteWrite(packet);
         }
         break;
       }

@@ -144,6 +144,19 @@ class Client {
   }
 
   /**
+   * Sends multiple packets
+   * @param {Array} packet The packets to send
+   * @param {string} type The packets to type
+   * @public
+   */
+  sendMultiple(packet, type) {
+    packet.forEach(async p => {
+      if (type === 'local') await this.localWrite(p);
+      else await this.remoteWrite(p);
+    });
+  }
+
+  /**
    * Displays a server admin message
    * @param {string} text The text to send
    * @returns {Promise<void>}

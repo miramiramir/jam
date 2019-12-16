@@ -3,6 +3,7 @@ class Beta extends Plugin {
     super(server, {
       name: 'beta',
       author: 'zane',
+      game: 'aj',
       commands: [
         {
           name: 'beta',

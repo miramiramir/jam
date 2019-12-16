@@ -3,6 +3,7 @@ class Help extends Plugin {
     super(server, {
       name: 'help',
       author: 'zane',
+      game: 'aj',
       commands: [
         {
           name: 'help',

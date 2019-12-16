@@ -5,6 +5,7 @@ class Glow extends Plugin {
     super(server, {
       name: 'glow',
       author: 'zane',
+      game: 'aj',
       commands: [
         {
           name: 'glow',

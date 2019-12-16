@@ -1,5 +1,5 @@
 const { CONNECTION_STATE } = require('../util/Constants');
-const AnimalJam = require('./protocol/AnimalJam');
+const GameProtocol = require('./protocol/GameProtocol');
 const { PromiseSocket } = require('promise-socket');
 const Packet = require('./protocol/packets');
 const Player = require('../game/Player');
@@ -40,7 +40,7 @@ class Client {
      * @type {AnimalJam}
      * @public
      */
-    this.protocol = new AnimalJam(this);
+    this.protocol = new GameProtocol(this);
 
     /**
      * Intervals set

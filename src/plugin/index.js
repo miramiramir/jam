@@ -42,6 +42,13 @@ class Plugin {
     this.hooks = info.hooks || [];
 
     /**
+    * Plugin game type
+    * @type {string}
+    * @public
+    */
+    this.game = info.game;
+
+    /**
      * The server that instantiated this plugin
      * @type {Server}
      * @public
@@ -57,6 +64,7 @@ class Plugin {
   static validateInfo(server, info) {
     if (!server) throw new Error('A server must be specified.');
     if (typeof info !== 'object') throw new TypeError('Plugin info must be an Object.');
+    if (!info.game) throw new Error('A game type must be specified.');
     if (typeof info.name !== 'string') throw new TypeError('Plugin name must be a string.');
     if (info.name !== info.name.toLowerCase()) throw new TypeError('Plugin name must be lowercase.');
     if (typeof info.author !== 'string') throw new TypeError('Plugin author must be a string.');

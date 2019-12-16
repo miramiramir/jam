@@ -11,6 +11,7 @@ class Copy extends Plugin {
     super(server, {
       name: 'copy',
       author: 'zane',
+      game: 'aj',
       commands: [
         {
           name: 'copy',

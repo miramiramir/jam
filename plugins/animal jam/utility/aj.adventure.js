@@ -3,6 +3,7 @@ class Adventure extends Plugin {
     super(server, {
       name: 'adventure',
       author: 'zane',
+      game: 'aj',
       commands: [
         {
           name: 'adventure',

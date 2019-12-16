@@ -4,6 +4,27 @@ const fse = require('fs-extra');
 const path = require('path');
 const Plugin = require('./');
 
+/**
+ * Game types
+ * @type {Array}
+ * @constant
+ */
+const GAME_TYPES = [
+  'aj',
+  'wild',
+  'feral',
+];
+
+/**
+ * Packet hook types
+ * @type {Array}
+ * @constant
+ */
+const PACKET_HOOK_TYPES = [
+  'local',
+  'remote',
+];
+
 class PluginManager {
   constructor(server) {
     /**
@@ -94,8 +115,11 @@ class PluginManager {
     if (!(plugin instanceof Plugin)) throw new Error(`Invalid plugin object ${plugin}`);
 
     if (this.plugins.has(plugin.name)) throw new Error(`A plugin with the name ${plugin.name} already exists`);
+    if (!GAME_TYPES.includes(plugin.game.toLowerCase())) throw new Error('Invalid game type');
 
-    this.plugins.set(plugin.name, plugin);
+    if (plugin.game === this._server.game) {
+      this.plugins.set(plugin.name, plugin);
+    }
 
     if (plugin.commands.length) this._registerCommands(plugin.commands);
     if (plugin.hooks.length) this._registerHooks(plugin.hooks);
@@ -232,15 +256,5 @@ class PluginManager {
     process.send({ type: 'commands', commands });
   }
 }
-
-/**
- * Packet hook types
- * @type {Array}
- * @constant
- */
-const PACKET_HOOK_TYPES = [
-  'local',
-  'remote',
-];
 
 module.exports = PluginManager;

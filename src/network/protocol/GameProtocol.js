@@ -3,7 +3,7 @@ const XmlPacket = require('./packets/XmlPacket');
 const XtPacket = require('./packets/XtPacket');
 const Protocol = require('.');
 
-class AnimalJamProtocol extends Protocol {
+class GameProtocol extends Protocol {
   constructor(client) {
     super(client);
 
@@ -54,4 +54,4 @@ class AnimalJamProtocol extends Protocol {
   }
 }
 
-module.exports = AnimalJamProtocol;
+module.exports = GameProtocol;

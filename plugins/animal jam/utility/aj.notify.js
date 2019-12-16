@@ -1,10 +1,11 @@
-const { notify } = require('../../src/util');
+const { notify } = require('../../../src/util');
 
 class Notify extends Plugin {
   constructor(server) {
     super(server, {
       name: 'notify',
       author: 'zane',
+      game: 'aj',
       hooks: [
         {
           packet: 'ti',

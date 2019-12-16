@@ -20,6 +20,7 @@ const TEMPLATE = {
   },
   jam: {
     name: 'Jam',
+    game: 'aj',
     port: 5588,
     debug: false,
     remote: {

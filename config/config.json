@@ -6,6 +6,7 @@
     "name": "Jam",
     "port": 443,
     "debug": false,
+    "game": "aj",
     "remote": {
       "host": "54.186.69.107",
       "port": 443

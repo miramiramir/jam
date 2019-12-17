@@ -88,7 +88,7 @@ class TCPServer extends EventEmitter {
 
         if (isArray(packet) && packet.length > 0) return this._client.sendMultiple(packet, type);
 
-        if (packet.type === 'local') {
+        if (type === 'local') {
           this._client.localWrite(packet);
         } else {
           this._client.remoteWrite(packet);

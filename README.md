@@ -134,6 +134,6 @@ Now you can login and play!
 
 Ever since we’ve known ourselves we were passionate about open sourcing our projects and helping people do things they couldn't do before so we would like to thank you all for that, without you it wouldn’t be possible.
 
-If you feel like you want to donate to help us out it would be very much appreciated
+If you feel like you want to donate to help us out it would be very much appreciated.
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.me/kazaz)

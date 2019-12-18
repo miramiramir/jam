@@ -13,16 +13,11 @@
 
 ## About
 
-Jam is a man-in-the-middle proxy server that allows you to easily interact with [Animal Jam](http://animaljam.com).
+Jam is a man-in-the-middle proxy server that allows you to easily interact with [Animal Jam](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=leekazaz1%40gmail.com&currency_code=USD&source=url).
 
 - Web interface
 - Plugin support
 - Chat commands
-
-Brought you by **Team Slick**! Follow us on Instagram to keep up to date with updates and releases. 
-
-- [Zane](https://www.instagram.com/zane.slick)
-- [Xyo](https://www.instagram.com/xyo.slick)
 
 ## Install
 
@@ -135,3 +130,10 @@ After setting up the `config.json` and `hosts` file, Jam is ready to go. To run 
 
 Now you can login and play!
 
+## Donate
+
+Ever since we’ve known ourselves we were passionate about open sourcing our projects and helping people do things they couldn't do before so we would like to thank you all for that, without you it wouldn’t be possible.
+
+If you feel like you want to donate to help us out it would be very much appreciated
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.me/kazaz)

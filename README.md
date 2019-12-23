@@ -26,7 +26,7 @@ Jam is a man-in-the-middle proxy server that allows you to easily interact with 
 1. Clone the repository to your computer
 
 ```bash
-git clone https://github.com/zaneslick/jam.git/
+git clone https://github.com/zyvexedpyro/jam-master.git
 ```
 
 2. Change directory into the new `jam` directory
